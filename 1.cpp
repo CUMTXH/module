@@ -1,10 +1,10 @@
-// Å·¼¸ÀïµÃ
+// æ¬§å‡ é‡Œå¾—
 ll gcd(ll a, ll b) {
     if (b == 0) return a;
     else return gcd(b, a % b);
 }
 
-// ¿ìËÙÃÝ
+// å¿«é€Ÿå¹‚
 ll powmod(ll a, ll b, ll mod) {
     ll ret = 1;
     for (; b; b >>= 1) {
@@ -15,7 +15,7 @@ ll powmod(ll a, ll b, ll mod) {
 }
 
 
-// À©Õ¹Å·¼¸ÀïµÃ
+// æ‰©å±•æ¬§å‡ é‡Œå¾—
 ll exgcd(ll a, ll b, ll &x, ll &y) {
     if (b == 0) {
         x = 1;
@@ -27,7 +27,7 @@ ll exgcd(ll a, ll b, ll &x, ll &y) {
     return d;
 }
 
-// Çó a * x = b (mod m) µÄ½â
+// æ±‚ a * x = b (mod m) çš„è§£
 ll modequ(ll a, ll b, ll m) {
     ll x, y;
     ll d = exgcd(a, m, x, y);
@@ -39,7 +39,7 @@ ll modequ(ll a, ll b, ll m) {
 }
 
 
-// ºÏ²¢Á½¸öÍ¬Óà·½³Ì
+// åˆå¹¶ä¸¤ä¸ªåŒä½™æ–¹ç¨‹
 void merge(ll &a, ll &b, ll c, ll d) { // d <= 10^9
     // bt = c - a(mod d)
     if (a == -1 && b == -1) return;
@@ -58,7 +58,7 @@ void merge(ll &a, ll &b, ll c, ll d) { // d <= 10^9
     b = b * d;
 }
 
-// ÏßÐÔÉ¸
+// çº¿æ€§ç­›
     p[1] = 1;
     for (int i = 2; i <= n; i++) {
         if (!p[i]) p[i] = i, pr[++tot] = i;
@@ -68,21 +68,21 @@ void merge(ll &a, ll &b, ll c, ll d) { // d <= 10^9
         }
     }
 
-nt gauss()  // ¸ßË¹ÏûÔª£¬´ð°¸´æÓÚa[i][n]ÖÐ£¬0 <= i < n
+int gauss()  // é«˜æ–¯æ¶ˆå…ƒï¼Œç­”æ¡ˆå­˜äºŽa[i][n]ä¸­ï¼Œ0 <= i < n
 {
     int c, r;
     for (c = 0, r = 0; c < n; c ++ )
     {
         int t = r;
-        for (int i = r; i < n; i ++ )  // ÕÒ¾ø¶ÔÖµ×î´óµÄÐÐ
+        for (int i = r; i < n; i ++ )  // æ‰¾ç»å¯¹å€¼æœ€å¤§çš„è¡Œ
             if (fabs(a[i][c]) > fabs(a[t][c]))
                 t = i;
 
         if (fabs(a[t][c]) < eps) continue;
 
-        for (int i = c; i <= n; i ++ ) swap(a[t][i], a[r][i]);  // ½«¾ø¶ÔÖµ×î´óµÄÐÐ»»µ½×î¶¥¶Ë
-        for (int i = n; i >= c; i -- ) a[r][i] /= a[r][c];  // ½«µ±Ç°ÐÐµÄÊ×Î»±ä³É1
-        for (int i = r + 1; i < n; i ++ )  // ÓÃµ±Ç°ÐÐ½«ÏÂÃæËùÓÐµÄÁÐÏû³É0
+        for (int i = c; i <= n; i ++ ) swap(a[t][i], a[r][i]);  // å°†ç»å¯¹å€¼æœ€å¤§çš„è¡Œæ¢åˆ°æœ€é¡¶ç«¯
+        for (int i = n; i >= c; i -- ) a[r][i] /= a[r][c];  // å°†å½“å‰è¡Œçš„é¦–ä½å˜æˆ1
+        for (int i = r + 1; i < n; i ++ )  // ç”¨å½“å‰è¡Œå°†ä¸‹é¢æ‰€æœ‰çš„åˆ—æ¶ˆæˆ0
             if (fabs(a[i][c]) > eps)
                 for (int j = n; j >= c; j -- )
                     a[i][j] -= a[r][j] * a[i][c];
@@ -94,14 +94,14 @@ nt gauss()  // ¸ßË¹ÏûÔª£¬´ð°¸´æÓÚa[i][n]ÖÐ£¬0 <= i < n
     {
         for (int i = r; i < n; i ++ )
             if (fabs(a[i][n]) > eps)
-                return 2; // ÎÞ½â
-        return 1; // ÓÐÎÞÇî¶à×é½â
+                return 2; // æ— è§£
+        return 1; // æœ‰æ— ç©·å¤šç»„è§£
     }
 
     for (int i = n - 1; i >= 0; i -- )
         for (int j = i + 1; j < n; j ++ )
             a[i][n] -= a[i][j] * a[j][n];
 
-    return 0; // ÓÐÎ¨Ò»½â
+    return 0; // æœ‰å”¯ä¸€è§£
 }
 
