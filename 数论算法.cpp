@@ -2,7 +2,7 @@
 ll gcd(ll a, ll b) {
     if (b == 0) return a;
     else return gcd(b, a % b);
-}
+}https://github.com/CUMTXH/module/blob/main/1.cpp
 
 // 快速幂
 ll powmod(ll a, ll b, ll mod) {
@@ -68,6 +68,7 @@ void merge(ll &a, ll &b, ll c, ll d) { // d <= 10^9
         }
     }
 
+// 高斯消元
 int gauss()  // 高斯消元，答案存于a[i][n]中，0 <= i < n
 {
     int c, r;
