@@ -4,23 +4,24 @@ using namespace std;
 const ll mod = 998244353;
 const ll maxn = 6e6 + 7;
 // 使用printf输出
+// 需要当作ll输出，会越界
 struct modint{
-	int x;
-	modint(int o=0){x=o;}
-	modint &operator = (int o){return x=o,*this;}
+	ll x;
+	modint(ll o=0){x=o;}
+	modint &operator = (ll o){return x=o,*this;}
 	modint &operator +=(modint o){return x=x+o.x>=mod?x+o.x-mod:x+o.x,*this;}
 	modint &operator -=(modint o){return x=x-o.x<0?x-o.x+mod:x-o.x,*this;}
 	modint &operator *=(modint o){return x=1ll*x*o.x%mod,*this;}
-	modint &operator ^=(int b){
+	modint &operator ^=(ll b){
 		modint a=*this,c=1;
 		for(;b;b>>=1,a*=a)if(b&1)c*=a;
 		return x=c.x,*this;
 	}
 	modint &operator /=(modint o){return *this *=o^=mod-2;}
-	modint &operator +=(int o){return x=x+o>=mod?x+o-mod:x+o,*this;}
-	modint &operator -=(int o){return x=x-o<0?x-o+mod:x-o,*this;}
-	modint &operator *=(int o){return x=1ll*x*o%mod,*this;}
-	modint &operator /=(int o){return *this *= ((modint(o))^=mod-2);}
+	modint &operator +=(ll o){return x=x+o>=mod?x+o-mod:x+o,*this;}
+	modint &operator -=(ll o){return x=x-o<0?x-o+mod:x-o,*this;}
+	modint &operator *=(ll o){return x=1ll*x*o%mod,*this;}
+	modint &operator /=(ll o){return *this *= ((modint(o))^=mod-2);}
 	template<class I>friend modint operator +(modint a,I b){return a+=b;}
 	template<class I>friend modint operator -(modint a,I b){return a-=b;}
 	template<class I>friend modint operator *(modint a,I b){return a*=b;}
