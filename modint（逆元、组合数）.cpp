@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
 #define ll long long
+#define rep(i,a,b) for(ll i = a ; i <= b ; i++)
+#define per(i,a,b) for(ll i = a ; i >= b ; i--)
+#define x first
+#define y second
 using namespace std;
 const ll mod = 998244353;
 const ll maxn = 6e6 + 7;
